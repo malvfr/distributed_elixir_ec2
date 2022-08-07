@@ -21,7 +21,8 @@ defmodule DistributedEc2 do
       ec2: [
         strategy: ClusterEC2.Strategy.Tags,
         config: [
-          ec2_tagname: "ec2:elixir-app"
+          ec2_tagname: "elxtag",
+          ec2_tagvalue: "distelixir"
         ]
       ]
     ]
