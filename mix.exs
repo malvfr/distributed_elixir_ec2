@@ -7,7 +7,8 @@ defmodule DistributedEc2.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      releases: releases()
     ]
   end
 
@@ -24,6 +25,14 @@ defmodule DistributedEc2.MixProject do
     [
       {:libcluster, "~> 3.3.1"},
       {:libcluster_ec2, "~> 0.5"}
+    ]
+  end
+
+  defp releases() do
+    [
+      distributed_ec2: [
+        cookie: "321"
+      ]
     ]
   end
 end

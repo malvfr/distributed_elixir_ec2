@@ -23,7 +23,8 @@ defmodule DistributedEc2 do
         config: [
           ec2_tagname: "elxtag",
           ec2_tagvalue: "distelixir",
-          app_prefix: "elxapp"
+          app_prefix: "distributed_ec2",
+          ip_to_nodename: &ip_to_nodename/2
         ]
       ]
     ]
@@ -33,5 +34,13 @@ defmodule DistributedEc2 do
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one, name: DistributedEc2.Supervisor)
+  end
+
+  defp ip_to_nodename(list, app_prefix) when is_list(list) do
+    list
+    |> Enum.map(fn ip ->
+      ip_with_dot = ip |> String.slice(3..-1) |> String.replace("-", ".")
+      :"#{app_prefix}@#{ip_with_dot}"
+    end)
   end
 end
