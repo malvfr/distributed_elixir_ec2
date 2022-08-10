@@ -39,7 +39,7 @@ defmodule DistributedEc2 do
   defp ip_to_nodename(list, app_prefix) when is_list(list) do
     list
     |> Enum.map(fn ip ->
-      ip_with_dot = ip |> String.slice(3..-1) |> String.replace("-", ".")
+      ip_with_dot = String.replace(ip, "-", ".")
       :"#{app_prefix}@#{ip_with_dot}"
     end)
   end
