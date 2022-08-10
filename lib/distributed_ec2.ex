@@ -22,12 +22,11 @@ defmodule DistributedEc2 do
         strategy: ClusterEC2.Strategy.Tags,
         config: [
           ec2_tagname: "elxtag",
-          ec2_tagvalue: "distelixir"
+          ec2_tagvalue: "distelixir",
+          app_prefix: "elxapp"
         ]
       ]
     ]
-
-    # end
 
     children = [
       {Cluster.Supervisor, [topologies, [name: DistributedEc2.ClusterSupervisor]]}
