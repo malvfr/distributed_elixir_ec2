@@ -9,7 +9,8 @@ defmodule DistributedEc2 do
           ec2_tagname: "elxtag",
           ec2_tagvalue: "distelixir",
           app_prefix: "distributed_ec2",
-          ip_to_nodename: &ip_to_nodename/2
+          ip_to_nodename: &ip_to_nodename/2,
+          show_debug: false
         ]
       ]
     ]
